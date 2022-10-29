@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/8by8-normal.png-27a75280c19579845b21039bd4073e26.image"
+
+[deps]
+
+source_file="res://ground/8by8-normal.png"
+dest_files=[ "res://.import/8by8-normal.png-27a75280c19579845b21039bd4073e26.image" ]
+
+[params]
+

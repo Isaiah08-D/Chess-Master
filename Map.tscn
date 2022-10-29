@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Map.tres" type="TileSet" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+
+[node name="Map" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 506, 454 )
+scale = Vector2( 0.1, 0.1 )
+z_index = 5
+current = true
+zoom = Vector2( 7, 7 )
+
+[node name="Ground" type="TileMap" parent="."]
+position = Vector2( 100, 178 )
+tile_set = ExtResource( 1 )
+cell_tile_origin = 2
+format = 1
+tile_data = PoolIntArray( -4522053, 1, 0, -4522021, 1, 0, -4521989, 1, 0, -4587493, 1, 0, -2424901, 1, 0, -2424869, 1, 0, -2424837, 1, 0, -2490341, 1, 0, -327749, 1, 0, -327717, 1, 0, -327685, 1, 0, -393189, 1, 0, 1769403, 1, 0, 1769435, 1, 0, 1769467, 1, 0, 1703963, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 284, -779 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Tutorial" type="Node" parent="."]
+
+[node name="Move" type="Label" parent="Tutorial"]
+margin_left = -1277.0
+margin_top = -865.0
+margin_right = -1112.0
+margin_bottom = -834.0
+rect_scale = Vector2( 6.41167, 6.47777 )
+text = "Use arrow keys 
+to move."
+align = 1
+
+[node name="Inventory" type="Label" parent="Tutorial"]
+margin_left = 640.0
+margin_top = -800.0
+margin_right = 848.0
+margin_bottom = -769.0
+rect_scale = Vector2( 6.41167, 6.47777 )
+text = "Press i to enter 
+your inventory. WIP"
+align = 1
+
+[node name="Hotbar" type="Label" parent="Tutorial"]
+margin_left = -98.0
+margin_top = 201.0
+margin_right = 28.0
+margin_bottom = 249.0
+rect_scale = Vector2( 6.41167, 6.47777 )
+text = "Use the arrow keys 
+to use items in 
+your hotbar WIP"
+align = 1
+
+[node name="Luck" type="Label" parent="Tutorial"]
+margin_left = -83.0
+margin_top = -1770.0
+margin_right = 43.0
+margin_bottom = -1722.0
+rect_scale = Vector2( 6.41167, 6.47777 )
+text = "Good Luck!"
+align = 1
