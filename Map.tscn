@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Map.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy.gd" type="Script" id=5]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 3 )
@@ -29,7 +31,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 284, -779 )
+position = Vector2( 301, -744 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="Tutorial" type="Node" parent="."]
@@ -41,6 +43,7 @@ margin_right = -1112.0
 margin_bottom = -834.0
 rect_scale = Vector2( 6.41167, 6.47777 )
 text = "Use arrow keys 
+or WASD
 to move."
 align = 1
 
@@ -55,12 +58,12 @@ your inventory. WIP"
 align = 1
 
 [node name="Hotbar" type="Label" parent="Tutorial"]
-margin_left = -98.0
-margin_top = 201.0
-margin_right = 28.0
-margin_bottom = 249.0
+margin_left = -153.0
+margin_top = 167.0
+margin_right = -16.0
+margin_bottom = 215.0
 rect_scale = Vector2( 6.41167, 6.47777 )
-text = "Use the arrow keys 
+text = "Use the number keys
 to use items in 
 your hotbar WIP"
 align = 1
@@ -73,3 +76,8 @@ margin_bottom = -1722.0
 rect_scale = Vector2( 6.41167, 6.47777 )
 text = "Good Luck!"
 align = 1
+
+[node name="Enemy1" parent="." instance=ExtResource( 4 )]
+position = Vector2( -2726, -768 )
+scale = Vector2( 0.7, 0.7 )
+script = ExtResource( 5 )

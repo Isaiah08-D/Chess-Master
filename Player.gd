@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 onready var sprite = get_node("/root/Map/Player/Sprite")
 onready var camera = get_node("/root/Map/Camera")
@@ -6,6 +6,10 @@ var speed = 2000
 
 var movement = {"up": false, "down": false, "left": false, "right": false}
 var moved = false
+
+var player_collision
+
+var vel = Vector2(0,0)
 
 func _ready():
 	pass
@@ -27,41 +31,52 @@ func _process(delta):
 	else: movement["right"] = false
 	
 	if movement["left"] and movement["up"] == true:
-		position.x -= delta * speed/2
-		position.y -= delta * speed/2
+		sprite.set_animation("walk-upleft")
+		vel.x -= delta * speed/2
+		vel.y -= delta * speed/2
 		moved = true
 	elif movement["left"] and movement["down"] == true and !moved:
-		position.x -= delta * speed/2
-		position.y += delta * speed/2
+		sprite.set_animation("walk-downleft")
+		vel.x -= delta * speed/2
+		vel.y += delta * speed/2
 		moved = true
 	elif movement["right"] and movement["up"] == true and !moved:
-		position.x += delta * speed/2
-		position.y -= delta * speed/2
+		sprite.set_animation("walk-upright")
+		vel.x += delta * speed/2
+		vel.y -= delta * speed/2
 		moved = true
 	elif movement["right"] and movement["down"] == true and !moved:
-		position.x += delta * speed/2
-		position.y += delta * speed/2
+		sprite.set_animation("walk-downright")
+		vel.x += delta * speed/2
+		vel.y += delta * speed/2
 		moved = true
 	elif movement["up"] == true and !moved:
 		sprite.set_animation("walk-up")
-		position.y -= delta * speed
+		vel.y -= delta * speed
 		moved = true
 	elif movement["down"] == true and !moved:
 		sprite.set_animation("walk-down")
-		position.y += delta * speed
+		vel.y += delta * speed
 		moved = true
 	elif movement["left"] == true and !moved:
 		sprite.set_animation("walk-left")
-		position.x -= delta * speed
+		vel.x -= delta * speed
 		moved = true
 	elif movement["right"] == true and !moved:
 		sprite.set_animation("walk-right")
-		position.x += delta * speed
+		vel.x += delta * speed
 		moved = true
 
+	player_collision = move_and_collide(vel)
+	
+	if player_collision:
+		print(player_collision.collider.name)
+		
 	moved = false
 		
 	camera.position = position
+	
+	vel = Vector2(0,0)
 	
 
 		
